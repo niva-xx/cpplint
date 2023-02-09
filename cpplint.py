@@ -58,7 +58,7 @@ import sre_compile
 import string
 import sys
 import sysconfig
-import unicodedata
+import unicodedata2
 import xml.etree.ElementTree
 
 # if empty, use defaults
@@ -4802,10 +4802,10 @@ def GetLineWidth(line):
   """
   if isinstance(line, unicode):
     width = 0
-    for uc in unicodedata.normalize('NFC', line):
-      if unicodedata.east_asian_width(uc) in ('W', 'F'):
+    for uc in unicodedata2.normalize('NFC', line):
+      if unicodedata2.east_asian_width(uc) in ('W', 'F'):
         width += 2
-      elif not unicodedata.combining(uc):
+      elif not unicodedata2.combining(uc):
         # Issue 337
         # https://mail.python.org/pipermail/python-list/2012-August/628809.html
         if (sys.version_info.major, sys.version_info.minor) <= (3, 2):
